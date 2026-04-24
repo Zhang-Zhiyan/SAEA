@@ -1,4 +1,4 @@
-# Stimuli-Aware Emotion Adaptor for Affective Explanation Captioning
+# Stimuli-Aware Emotion Adaptor for Enhancing LLM in Affective Explanation Captioning
 
 <div align="center">
 
@@ -27,218 +27,11 @@ Affective Explanation Captioning (AEC) requires not only recognizing viewer-perc
 The extracted emotion features are injected into an LLM (GPT-2) as cross-attention memory, guiding coherent and emotion-grounded explanation generation.
 
 <div align="center">
-<a href="images/image2.pdf">Framework figure (PDF)</a>
+<a href="images/image2.jpg">Framework figure</a>
 <br>
 <em>Two-stage SAEA framework: (left) emotion adaptor stage; (right) LLM explanation generation stage.</em>
 </div>
 
-
----
-
-## Results
-
-<table>
-  <thead>
-    <tr>
-      <th>Dataset</th>
-      <th>Method</th>
-      <th>ACC</th>
-      <th>B@1</th>
-      <th>B@2</th>
-      <th>B@3</th>
-      <th>B@4</th>
-      <th>M</th>
-      <th>R</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td rowspan="7">ArtEmis v1.0</td>
-      <td>M2</td>
-      <td>60.2</td>
-      <td>51.1</td>
-      <td>28.2</td>
-      <td>15.4</td>
-      <td>9.0</td>
-      <td>13.7</td>
-      <td>28.6</td>
-    </tr>
-    <tr>
-      <td>SAT</td>
-      <td>60.2</td>
-      <td>52.0</td>
-      <td>28.0</td>
-      <td>14.6</td>
-      <td>7.9</td>
-      <td>13.4</td>
-      <td>29.4</td>
-    </tr>
-    <tr>
-      <td>NLX-GPT</td>
-      <td>63.6</td>
-      <td>53.8</td>
-      <td>29.9</td>
-      <td>16.3</td>
-      <td>9.3</td>
-      <td>13.8</td>
-      <td>30.3</td>
-    </tr>
-    <tr>
-      <td>SEVLM</td>
-      <td>65.6</td>
-      <td>54.2</td>
-      <td>30.3</td>
-      <td>16.4</td>
-      <td>9.2</td>
-      <td>13.9</td>
-      <td>30.4</td>
-    </tr>
-    <tr>
-      <td>BLIP-2</td>
-      <td>64.3</td>
-      <td>53.7</td>
-      <td>29.4</td>
-      <td>15.7</td>
-      <td>8.6</td>
-      <td>13.6</td>
-      <td>30.1</td>
-    </tr>
-    <tr>
-      <td>LLaVA-OV</td>
-      <td>69.8</td>
-      <td>49.9</td>
-      <td>27.2</td>
-      <td>15.0</td>
-      <td>8.4</td>
-      <td>14.3</td>
-      <td>28.8</td>
-    </tr>
-    <tr>
-      <td><strong>Ours</strong></td>
-      <td><strong>70.5</strong></td>
-      <td><strong>56.3</strong></td>
-      <td><strong>32.2</strong></td>
-      <td><strong>17.8</strong></td>
-      <td><strong>10.3</strong></td>
-      <td><strong>14.8</strong></td>
-      <td><strong>31.2</strong></td>
-    </tr>
-
-    <tr>
-      <td rowspan="6">ArtEmis v2.0</td>
-      <td>SAT</td>
-      <td>43.3</td>
-      <td>48.7</td>
-      <td>25.3</td>
-      <td>13.2</td>
-      <td>7.3</td>
-      <td>12.8</td>
-      <td>27.2</td>
-    </tr>
-    <tr>
-      <td>NLX-GPT</td>
-      <td>41.8</td>
-      <td>51.7</td>
-      <td>30.6</td>
-      <td>17.6</td>
-      <td>10.5</td>
-      <td>13.8</td>
-      <td>30.7</td>
-    </tr>
-    <tr>
-      <td>SEVLM</td>
-      <td>44.2</td>
-      <td>51.8</td>
-      <td>30.4</td>
-      <td>17.2</td>
-      <td>10.1</td>
-      <td>13.9</td>
-      <td>30.4</td>
-    </tr>
-    <tr>
-      <td>BLIP-2</td>
-      <td>46.2</td>
-      <td>48.8</td>
-      <td>27.5</td>
-      <td>15.3</td>
-      <td>8.8</td>
-      <td>13.2</td>
-      <td>29.2</td>
-    </tr>
-    <tr>
-      <td>LLaVA-OV</td>
-      <td>53.7</td>
-      <td>50.7</td>
-      <td>29.8</td>
-      <td>17.6</td>
-      <td>10.7</td>
-      <td>14.9</td>
-      <td>29.9</td>
-    </tr>
-    <tr>
-      <td><strong>Ours</strong></td>
-      <td><strong>56.2</strong></td>
-      <td><strong>54.7</strong></td>
-      <td><strong>33.4</strong></td>
-      <td><strong>19.9</strong></td>
-      <td><strong>12.2</strong></td>
-      <td><strong>15.2</strong></td>
-      <td><strong>32.0</strong></td>
-    </tr>
-
-    <tr>
-      <td rowspan="5">Affection</td>
-      <td>NLX-GPT</td>
-      <td>69.7</td>
-      <td>61.3</td>
-      <td>35.6</td>
-      <td>20.4</td>
-      <td>11.9</td>
-      <td>15.4</td>
-      <td>30.7</td>
-    </tr>
-    <tr>
-      <td>SEVLM</td>
-      <td>69.4</td>
-      <td>62.0</td>
-      <td>36.3</td>
-      <td>21.0</td>
-      <td>12.3</td>
-      <td>15.5</td>
-      <td>30.9</td>
-    </tr>
-    <tr>
-      <td>BLIP-2</td>
-      <td>69.4</td>
-      <td>61.2</td>
-      <td>35.3</td>
-      <td>20.2</td>
-      <td>11.7</td>
-      <td>15.3</td>
-      <td>30.3</td>
-    </tr>
-    <tr>
-      <td>LLaVA-OV</td>
-      <td>76.6</td>
-      <td>61.2</td>
-      <td>36.0</td>
-      <td>21.4</td>
-      <td>12.9</td>
-      <td>16.5</td>
-      <td>30.8</td>
-    </tr>
-    <tr>
-      <td><strong>Ours</strong></td>
-      <td><strong>78.2</strong></td>
-      <td><strong>64.5</strong></td>
-      <td><strong>38.9</strong></td>
-      <td><strong>23.1</strong></td>
-      <td><strong>13.7</strong></td>
-      <td><strong>16.6</strong></td>
-      <td><strong>32.3</strong></td>
-    </tr>
-  </tbody>
-</table>
 
 ---
 
@@ -282,7 +75,7 @@ SAEA/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/SAEA.git
+git clone https://github.com/Zhang-Zhiyan/SAEA
 cd SAEA
 ```
 
@@ -323,31 +116,8 @@ bash cococaption/get_stanford_models.sh
 | GPT-2                      | Language decoder              | [HuggingFace](https://huggingface.co/openai-community/gpt2)  |
 
 
-
-Download the LLaVA-OneVision checkpoint:
-
-```bash
-# HuggingFace CLI
-huggingface-cli download lmms-lab/llava-onevision-qwen2-0.5b-ov \
-    --local-dir ./pretrained/llava-onevision-qwen2-0.5b-ov
-```
-
 ---
-
-## Data Preparation
-
-SAEA is evaluated on three AEC datasets. Each dataset uses the **artEmisX JSON format**:
-
-```json
-{
-  "<sample_id>": {
-    "image_name": "<filename_without_extension>",
-    "emotions": ["amusement", "awe"],
-    "explanations": ["The warm colours ...", "The sky evokes ..."],
-    "origin_emotion_distribution": [0.1, 0.3, 0.05, 0.1, 0.0, 0.0, 0.1, 0.15, 0.2]
-  }
-}
-```
+## Datasets
 
 The 9 emotion categories (in order): `amusement`, `awe`, `contentment`, `excitement`, `anger`, `disgust`, `fear`, `sadness`, `something else`.
 
@@ -370,7 +140,7 @@ data/
     ├── artEmisX_test.json
     └── artEmisX_test_annot_exp.json   # COCO-format ground truth for eval
 ```
-
+The processing steps of the dataset can be referred to at [SEVLM](https://github.com/BetterZH/SEVLM-code)
 ---
 
 ## Training
