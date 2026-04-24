@@ -1,8 +1,6 @@
+<div align="center">
 # Stimuli-Aware Emotion Adaptor for Enhancing LLM in Affective Explanation Captioning
 
-<div align="center">
-
-**[Stimuli-Aware Emotion Adaptor for Enhancing LLM in Affective Explanation Captioning]()**
 
 [Zhiyan Zhang]()<sup>1</sup>, [Peipei Song]()<sup>1</sup>†, [Jinpeng Hu]()<sup>2</sup>, [Weidong Chen]()<sup>1</sup>, [Lin Ni]()<sup>1</sup>, [Xun Yang]()<sup>1</sup>
 
@@ -16,24 +14,20 @@
 
 ---
 
-## Overview
+## Abstract
 
-Affective Explanation Captioning (AEC) requires not only recognizing viewer-perceived emotions evoked by an image, but also generating natural-language explanations for those emotions. We propose **SAEA (Stimuli-Aware Emotion Adaptor)**, which explicitly enhances LLMs with emotion-aware visual priors by:
+Affective Explanation Captioning (AEC) is an emerging task towards explainable visual emotion analysis, which requires not only recognizing viewer-perceived emotions but also generating corresponding explanations. Existing works typically adopt an image captioning paradigm by coupling a visual encoder with an LLM. However, by directly transferring generic visual embeddings, they often fall short in providing plausible affective interpretations. In this work, we propose a Stimuli-Aware Emotion Adaptor (SAEA) that explicitly enhances LLMs with emotion-aware visual priors. SAEA comprises emotional stimuli estimation and emotional token selection, which adaptively highlights emotion-triggering regions while suppressing redundant content. We optimize it with emotion distribution learning to capture diverse cues beyond a single dominant label.
+The adapted emotion-informed features are then injected into LLMs to guide explanation generation. Extensive experiments on three benchmarks (Affection, ArtEmis v1.0, and ArtEmis v2.0) demonstrate that our approach consistently improves both emotion recognition and explanation quality. 
 
-1. **Emotional Stimuli Estimation** — learning positive/negative emotion prototypes to score each image patch by its emotional relevance.
-2. **Emotional Token Selection** — reweighting and compressing tokens via spatial pooling and Q-Former aggregation.
-3. **Emotion Distribution Learning** — using KL-divergence against soft label distributions to capture diverse affective cues beyond a single dominant label.
-
-The extracted emotion features are injected into an LLM (GPT-2) as cross-attention memory, guiding coherent and emotion-grounded explanation generation.
-
-<div align="center">
-<a href="images/image2.jpg">Framework figure</a>
-<br>
-<em>Two-stage SAEA framework: (left) emotion adaptor stage; (right) LLM explanation generation stage.</em>
-</div>
-
-
+![Teaser figure](images/image1.jpg)
+Fig. 1: Illustration of the AEC task, which requires not only recognizing viewer-perceived emotions but also generating corresponding explanations. Affective explanations are often concentrated in specific local regions of an image.
 ---
+
+## Model Architecture
+![Teaser figure](images/image2.jpg)
+As shown in Fig.2, the proposed framework comprises two stages: an emotion adaptor that identifies emotion-triggering regions, selects informative tokens, and leverages emotion distribution learning to capture diverse affective cues; and an LLM reasoning stage that generates affective explanations conditioned on these emotion-aware priors.
+
+
 
 ## Repository Structure
 
