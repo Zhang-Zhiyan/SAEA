@@ -223,8 +223,6 @@ If you find this work useful, please cite:
 
 ## Acknowledgement
 
-This work was supported by the National Natural Science Foundation of China (62402471, U22A2094, 62302474, 62402158, 62272435). This research was also supported by the advanced computing resources provided by the Supercomputing Center of the USTC.
-
 This codebase builds upon [LLaVA-OneVision](https://github.com/LLaVA-VL/LLaVA-NeXT), and the [SEVLM](https://github.com/BetterZH/SEVLM-code) codebase. We thank the authors for their open-source contributions.
 
 ---
