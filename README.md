@@ -1,4 +1,5 @@
 <div align="center">
+
 # Stimuli-Aware Emotion Adaptor for Enhancing LLM in Affective Explanation Captioning
 
 
@@ -20,7 +21,9 @@ Affective Explanation Captioning (AEC) is an emerging task towards explainable v
 The adapted emotion-informed features are then injected into LLMs to guide explanation generation. Extensive experiments on three benchmarks (Affection, ArtEmis v1.0, and ArtEmis v2.0) demonstrate that our approach consistently improves both emotion recognition and explanation quality. 
 
 ![Teaser figure](images/image1.jpg)
+
 Fig. 1: Illustration of the AEC task, which requires not only recognizing viewer-perceived emotions but also generating corresponding explanations. Affective explanations are often concentrated in specific local regions of an image.
+
 ---
 
 ## Model Architecture
@@ -96,7 +99,7 @@ pip install -e .
 ### 4. Download Stanford CoreNLP (for SPICE metric, optional)
 
 ```bash
-bash cococaption/get_stanford_models.sh
+bash cococaption
 ```
 
 ---
@@ -134,7 +137,7 @@ data/
     ├── artEmisX_test.json
     └── artEmisX_test_annot_exp.json   # COCO-format ground truth for eval
 ```
-The processing steps of the dataset can be referred to at [SEVLM](https://github.com/BetterZH/SEVLM-code)
+The processing steps of the dataset can be referred to at [SEVLM](https://github.com/BetterZH/SEVLM-code), you need to perform data preprocessing on all three datasets.
 ---
 
 ## Training
