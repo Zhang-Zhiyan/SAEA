@@ -37,7 +37,7 @@ As shown in Fig.2, the proposed framework comprises two stages: an emotion adapt
 ```
 SAEA/
 ├── train_emotion_expert.py    # Stage 1: train SAEA emotion adaptor
-├── train_hybrid_gpt2.py       # Stage 2: train LLaVA-GPT2 hybrid model
+├── train_hybrid_gpt2.py       # Stage 2: train hybrid model
 ├── train_stage1.sh            # Stage 1 launch script
 ├── train_stage2.sh            # Stage 2 launch script
 │
@@ -166,7 +166,7 @@ python train_emotion_expert.py \
 ```
 
 
-### Stage 2 — Hybrid Model (LLaVA + GPT-2)
+### Stage 2 — Hybrid Model
 
 Edit `train_stage2.sh` and set `EMOTION_EXPERT_CKPT` to the Stage 1 best checkpoint, then:
 
@@ -212,8 +212,10 @@ If you find this work useful, please cite:
 @inproceedings{zhang2026saea,
   title     = {Stimuli-Aware Emotion Adaptor for Enhancing LLM in Affective Explanation Captioning},
   author    = {Zhang, Zhiyan and Song, Peipei and Hu, Jinpeng and Chen, Weidong and Ni, Lin and Yang, Xun},
-  booktitle = {ICASSP},
-  year      = {2026}
+  booktitle = {ICASSP 2026 - 2026 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 
+  pages     = {10662-10666},
+  year      = {2026},
+  doi       = {10.1109/ICASSP55912.2026.11461412}}
 }
 ```
 
@@ -223,7 +225,7 @@ If you find this work useful, please cite:
 
 This work was supported by the National Natural Science Foundation of China (62402471, U22A2094, 62302474, 62402158, 62272435). This research was also supported by the advanced computing resources provided by the Supercomputing Center of the USTC.
 
-This codebase builds upon [LLaVA-OneVision](https://github.com/LLaVA-VL/LLaVA-NeXT), [GPT-2](https://github.com/openai/gpt-2), and the [SEVLM](https://github.com/YuanJianhao508/SEVLM) codebase. We thank the authors for their open-source contributions.
+This codebase builds upon [LLaVA-OneVision](https://github.com/LLaVA-VL/LLaVA-NeXT), and the [SEVLM](https://github.com/BetterZH/SEVLM-code) codebase. We thank the authors for their open-source contributions.
 
 ---
 
