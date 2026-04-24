@@ -98,9 +98,9 @@ pip install -e .
 
 ### 4. Download Stanford CoreNLP (for SPICE metric, optional)
 
-```bash
-bash cococaption
-```
+
+Download cococaption
+
 
 ---
 
@@ -108,7 +108,7 @@ bash cococaption
 
 | Component                  | Description                   | Source                                                       |
 | -------------------------- | ----------------------------- | ------------------------------------------------------------ |
-| LLaVA-OneVision-Qwen2-0.5B | Visual backbone               | [HuggingFace](https://huggingface.co/lmms-lab/llava-onevision-qwen2-0.5b-ov) |
+| LLaVA-OneVision-0.5B | Visual backbone               | [HuggingFace](https://huggingface.co/lmms-lab/llava-onevision-qwen2-0.5b-ov) |
 | SigLIP-so400m-patch14-384  | Visual encoder (inside LLaVA) | [HuggingFace](https://huggingface.co/google/siglip-so400m-patch14-384) |
 | GPT-2                      | Language decoder              | [HuggingFace](https://huggingface.co/openai-community/gpt2)  |
 
@@ -118,11 +118,11 @@ bash cococaption
 
 The 9 emotion categories (in order): `amusement`, `awe`, `contentment`, `excitement`, `anger`, `disgust`, `fear`, `sadness`, `something else`.
 
-| Dataset | Images | Source | Split (train/val/test) |
-|---------|--------|--------|------------------------|
-| [Affection](https://affective-explanations.org/) | real-world | Flickr | 85% / 5% / 10% |
-| [ArtEmis v1.0](https://www.artemisdataset.org/) | WikiArt | WikiArt | 85% / 5% / 10% |
-| [ArtEmis v2.0](https://www.artemisdataset-v2.org/) | WikiArt | WikiArt | 85% / 5% / 10% |
+| Dataset | Images | Source |
+|---------|--------|--------|
+| [Affection](https://affective-explanations.org/) | real-world | Flickr |
+| [ArtEmis v1.0](https://www.artemisdataset.org/) | WikiArt | WikiArt |
+| [ArtEmis v2.0](https://www.artemisdataset-v2.org/) | WikiArt | WikiArt |
 
 After downloading, organise as:
 
@@ -165,19 +165,6 @@ python train_emotion_expert.py \
     --patience 5
 ```
 
-The best checkpoint (selected by validation accuracy) is saved to `checkpoints_stage1/emotion_expert_stage1_best.pth`.
-
-**Key hyperparameters:**
-
-| Argument | Default | Description |
-|----------|---------|-------------|
-| `--batch_size` | 32 | Batch size (paper uses 64 on A100) |
-| `--num_epochs` | 15 | Max epochs (paper uses 4) |
-| `--learning_rate` | 1e-4 | Initial LR |
-| `--patience` | 5 | Early-stop patience |
-| `--max_val_samples` | 20000 | Val samples cap (speed) |
-
----
 
 ### Stage 2 — Hybrid Model (LLaVA + GPT-2)
 
@@ -214,23 +201,6 @@ python train_hybrid_gpt2.py \
     --gpu_mode ddp --gpu_ids "0,1"
 ```
 
-**Key hyperparameters:**
-
-| Argument | Default | Description |
-|----------|---------|-------------|
-| `--llava_size` | `0.5b` | Backbone: `0.5b` (hidden=896) or `7b` (hidden=4096) |
-| `--epochs` | 15 | Training epochs (paper uses 4) |
-| `--bs` | 32 | Batch size (paper uses 64 on A100) |
-| `--lr` | 2e-5 | Learning rate |
-| `--eval_top_p` | 0.9 | Nucleus sampling p |
-
-COCO metrics (BLEU-1/2/3/4, METEOR, ROUGE-L) are computed automatically after each epoch and saved to `captions_stage2/scores_epoch_N.json`.
-
----
-
-## Evaluation
-
-BLEU, METEOR, and ROUGE-L are computed automatically during Stage 2 training using the bundled `cococaption` toolkit. To run evaluation standalone on a saved checkpoint, pass `--resume_from_checkpoint` and set `--epochs` to 0 (or any epoch ≤ the loaded epoch).
 
 ---
 
