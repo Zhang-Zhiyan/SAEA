@@ -1,0 +1,27 @@
+# Core deep learning
+torch>=2.1.0
+torchvision>=0.16.0
+transformers>=4.40.0
+accelerate>=0.29.0
+peft>=0.4.0
+
+# Vision
+Pillow>=10.0.0
+open-clip-torch>=2.24.0
+timm>=0.9.0
+
+# NLP / generation
+sentencepiece>=0.1.99
+tiktoken>=0.6.0
+
+# Training utilities
+tqdm>=4.66.0
+numpy>=1.24.0
+einops>=0.6.1
+
+# Evaluation
+pycocoevalcap>=1.2
+pycocotools>=2.0.7
+sacrebleu>=2.4.0
+nltk>=3.8.0
+rouge-score>=0.1.2
