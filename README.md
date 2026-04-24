@@ -1,12 +1,12 @@
-# SAEA: Stimuli-Aware Emotion Adaptor for Affective Explanation Captioning
+# Stimuli-Aware Emotion Adaptor for Affective Explanation Captioning
 
 <div align="center">
 
 **[Stimuli-Aware Emotion Adaptor for Enhancing LLM in Affective Explanation Captioning]()**
 
-[Zhiyan Zhang](), [Peipei Song]()†, [Jinpeng Hu](), [Weidong Chen](), [Lin Ni](), [Xun Yang]()
+[Zhiyan Zhang]()<sup>1</sup>, [Peipei Song]()<sup>1</sup>†, [Jinpeng Hu]()<sup>2</sup>, [Weidong Chen]()<sup>1</sup>, [Lin Ni]()<sup>1</sup>, [Xun Yang]()<sup>1</sup>
 
-$^1$ University of Science and Technology of China &nbsp;&nbsp; $^2$ Hefei University of Technology
+<sup>1</sup> University of Science and Technology of China &nbsp;&nbsp; <sup>2</sup> Hefei University of Technology
 
 *ICASSP 2026*
 
@@ -27,29 +27,218 @@ Affective Explanation Captioning (AEC) requires not only recognizing viewer-perc
 The extracted emotion features are injected into an LLM (GPT-2) as cross-attention memory, guiding coherent and emotion-grounded explanation generation.
 
 <div align="center">
-<img src="icassp2026/image2.pdf" width="90%"/>
+<a href="images/image2.pdf">Framework figure (PDF)</a>
 <br>
 <em>Two-stage SAEA framework: (left) emotion adaptor stage; (right) LLM explanation generation stage.</em>
 </div>
+
 
 ---
 
 ## Results
 
-We evaluate on three AEC benchmarks. **ACC** = emotion recognition accuracy (%); **B@n** = BLEU-n; **M** = METEOR; **R** = ROUGE-L.
+<table>
+  <thead>
+    <tr>
+      <th>Dataset</th>
+      <th>Method</th>
+      <th>ACC</th>
+      <th>B@1</th>
+      <th>B@2</th>
+      <th>B@3</th>
+      <th>B@4</th>
+      <th>M</th>
+      <th>R</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="7">ArtEmis v1.0</td>
+      <td>M2</td>
+      <td>60.2</td>
+      <td>51.1</td>
+      <td>28.2</td>
+      <td>15.4</td>
+      <td>9.0</td>
+      <td>13.7</td>
+      <td>28.6</td>
+    </tr>
+    <tr>
+      <td>SAT</td>
+      <td>60.2</td>
+      <td>52.0</td>
+      <td>28.0</td>
+      <td>14.6</td>
+      <td>7.9</td>
+      <td>13.4</td>
+      <td>29.4</td>
+    </tr>
+    <tr>
+      <td>NLX-GPT</td>
+      <td>63.6</td>
+      <td>53.8</td>
+      <td>29.9</td>
+      <td>16.3</td>
+      <td>9.3</td>
+      <td>13.8</td>
+      <td>30.3</td>
+    </tr>
+    <tr>
+      <td>SEVLM</td>
+      <td>65.6</td>
+      <td>54.2</td>
+      <td>30.3</td>
+      <td>16.4</td>
+      <td>9.2</td>
+      <td>13.9</td>
+      <td>30.4</td>
+    </tr>
+    <tr>
+      <td>BLIP-2</td>
+      <td>64.3</td>
+      <td>53.7</td>
+      <td>29.4</td>
+      <td>15.7</td>
+      <td>8.6</td>
+      <td>13.6</td>
+      <td>30.1</td>
+    </tr>
+    <tr>
+      <td>LLaVA-OV</td>
+      <td>69.8</td>
+      <td>49.9</td>
+      <td>27.2</td>
+      <td>15.0</td>
+      <td>8.4</td>
+      <td>14.3</td>
+      <td>28.8</td>
+    </tr>
+    <tr>
+      <td><strong>Ours</strong></td>
+      <td><strong>70.5</strong></td>
+      <td><strong>56.3</strong></td>
+      <td><strong>32.2</strong></td>
+      <td><strong>17.8</strong></td>
+      <td><strong>10.3</strong></td>
+      <td><strong>14.8</strong></td>
+      <td><strong>31.2</strong></td>
+    </tr>
 
-| Dataset | Method | ACC | B@1 | B@2 | B@3 | B@4 | M | R |
-|---------|--------|-----|-----|-----|-----|-----|---|---|
-| ArtEmis v1.0 | NLX-GPT | 63.6 | 53.8 | 29.9 | 16.3 | 9.3 | 13.8 | 30.3 |
-| | SEVLM | 65.6 | 54.2 | 30.3 | 16.4 | 9.2 | 13.9 | 30.4 |
-| | LLaVA-OV | 69.8 | 49.9 | 27.2 | 15.0 | 8.4 | 14.3 | 28.8 |
-| | **Ours** | **70.5** | **56.3** | **32.2** | **17.8** | **10.3** | **14.8** | **31.2** |
-| ArtEmis v2.0 | SEVLM | 44.2 | 51.8 | 30.4 | 17.2 | 10.1 | 13.9 | 30.4 |
-| | LLaVA-OV | 53.7 | 50.7 | 29.8 | 17.6 | 10.7 | 14.9 | 29.9 |
-| | **Ours** | **56.2** | **54.7** | **33.4** | **19.9** | **12.2** | **15.2** | **32.0** |
-| Affection | SEVLM | 69.4 | 62.0 | 36.3 | 21.0 | 12.3 | 15.5 | 30.9 |
-| | LLaVA-OV | 76.6 | 61.2 | 36.0 | 21.4 | 12.9 | 16.5 | 30.8 |
-| | **Ours** | **78.2** | **64.5** | **38.9** | **23.1** | **13.7** | **16.6** | **32.3** |
+    <tr>
+      <td rowspan="6">ArtEmis v2.0</td>
+      <td>SAT</td>
+      <td>43.3</td>
+      <td>48.7</td>
+      <td>25.3</td>
+      <td>13.2</td>
+      <td>7.3</td>
+      <td>12.8</td>
+      <td>27.2</td>
+    </tr>
+    <tr>
+      <td>NLX-GPT</td>
+      <td>41.8</td>
+      <td>51.7</td>
+      <td>30.6</td>
+      <td>17.6</td>
+      <td>10.5</td>
+      <td>13.8</td>
+      <td>30.7</td>
+    </tr>
+    <tr>
+      <td>SEVLM</td>
+      <td>44.2</td>
+      <td>51.8</td>
+      <td>30.4</td>
+      <td>17.2</td>
+      <td>10.1</td>
+      <td>13.9</td>
+      <td>30.4</td>
+    </tr>
+    <tr>
+      <td>BLIP-2</td>
+      <td>46.2</td>
+      <td>48.8</td>
+      <td>27.5</td>
+      <td>15.3</td>
+      <td>8.8</td>
+      <td>13.2</td>
+      <td>29.2</td>
+    </tr>
+    <tr>
+      <td>LLaVA-OV</td>
+      <td>53.7</td>
+      <td>50.7</td>
+      <td>29.8</td>
+      <td>17.6</td>
+      <td>10.7</td>
+      <td>14.9</td>
+      <td>29.9</td>
+    </tr>
+    <tr>
+      <td><strong>Ours</strong></td>
+      <td><strong>56.2</strong></td>
+      <td><strong>54.7</strong></td>
+      <td><strong>33.4</strong></td>
+      <td><strong>19.9</strong></td>
+      <td><strong>12.2</strong></td>
+      <td><strong>15.2</strong></td>
+      <td><strong>32.0</strong></td>
+    </tr>
+
+    <tr>
+      <td rowspan="5">Affection</td>
+      <td>NLX-GPT</td>
+      <td>69.7</td>
+      <td>61.3</td>
+      <td>35.6</td>
+      <td>20.4</td>
+      <td>11.9</td>
+      <td>15.4</td>
+      <td>30.7</td>
+    </tr>
+    <tr>
+      <td>SEVLM</td>
+      <td>69.4</td>
+      <td>62.0</td>
+      <td>36.3</td>
+      <td>21.0</td>
+      <td>12.3</td>
+      <td>15.5</td>
+      <td>30.9</td>
+    </tr>
+    <tr>
+      <td>BLIP-2</td>
+      <td>69.4</td>
+      <td>61.2</td>
+      <td>35.3</td>
+      <td>20.2</td>
+      <td>11.7</td>
+      <td>15.3</td>
+      <td>30.3</td>
+    </tr>
+    <tr>
+      <td>LLaVA-OV</td>
+      <td>76.6</td>
+      <td>61.2</td>
+      <td>36.0</td>
+      <td>21.4</td>
+      <td>12.9</td>
+      <td>16.5</td>
+      <td>30.8</td>
+    </tr>
+    <tr>
+      <td><strong>Ours</strong></td>
+      <td><strong>78.2</strong></td>
+      <td><strong>64.5</strong></td>
+      <td><strong>38.9</strong></td>
+      <td><strong>23.1</strong></td>
+      <td><strong>13.7</strong></td>
+      <td><strong>16.6</strong></td>
+      <td><strong>32.3</strong></td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -127,11 +316,13 @@ bash cococaption/get_stanford_models.sh
 
 ## Pretrained Models
 
-| Component | Description | Source |
-|-----------|-------------|--------|
-| LLaVA-OneVision-Qwen2-0.5B | Visual backbone | [HuggingFace](https://huggingface.co/lmms-lab/llava-onevision-qwen2-0.5b-ov) |
-| SigLIP-so400m-patch14-384 | Visual encoder (inside LLaVA) | [HuggingFace](https://huggingface.co/google/siglip-so400m-patch14-384) |
-| GPT-2 | Language decoder | [HuggingFace](https://huggingface.co/openai-community/gpt2) |
+| Component                  | Description                   | Source                                                       |
+| -------------------------- | ----------------------------- | ------------------------------------------------------------ |
+| LLaVA-OneVision-Qwen2-0.5B | Visual backbone               | [HuggingFace](https://huggingface.co/lmms-lab/llava-onevision-qwen2-0.5b-ov) |
+| SigLIP-so400m-patch14-384  | Visual encoder (inside LLaVA) | [HuggingFace](https://huggingface.co/google/siglip-so400m-patch14-384) |
+| GPT-2                      | Language decoder              | [HuggingFace](https://huggingface.co/openai-community/gpt2)  |
+
+
 
 Download the LLaVA-OneVision checkpoint:
 
@@ -273,30 +464,6 @@ COCO metrics (BLEU-1/2/3/4, METEOR, ROUGE-L) are computed automatically after ea
 ## Evaluation
 
 BLEU, METEOR, and ROUGE-L are computed automatically during Stage 2 training using the bundled `cococaption` toolkit. To run evaluation standalone on a saved checkpoint, pass `--resume_from_checkpoint` and set `--epochs` to 0 (or any epoch ≤ the loaded epoch).
-
----
-
-## Implementation Details
-
-Following the paper:
-
-| Setting | Value |
-|---------|-------|
-| Visual encoder | SigLIP-so400m-patch14-384 |
-| Language decoder | GPT-2 |
-| Visual feature dim $d_v$ | 1152 |
-| Emotion embedding dim $d_s$ | 512 |
-| GPT-2 cross-attn dim $d_t$ | 768 |
-| Number of ViT layers $L$ | 4 |
-| Spatial pool size $K$ | 2 |
-| Image crops | 4 |
-| Patch grid $N$ | 27 |
-| Temperature $\tau$ | 0.01 |
-| Stage 1 LR | 1e-4 |
-| Stage 2 LR | 2e-5 |
-| Batch size | 64 |
-| Optimizer | AdamW + CosineAnnealingWarmRestarts |
-| Hardware | 1× NVIDIA A100 |
 
 ---
 
