@@ -4,7 +4,7 @@
 
 **[Stimuli-Aware Emotion Adaptor for Enhancing LLM in Affective Explanation Captioning]()**
 
-[Zhiyan Zhang]()\*, [Peipei Song]()\*†, [Jinpeng Hu](), [Weidong Chen](), [Lin Ni](), [Xun Yang]()
+[Zhiyan Zhang](), [Peipei Song]()†, [Jinpeng Hu](), [Weidong Chen](), [Lin Ni](), [Xun Yang]()
 
 $^1$ University of Science and Technology of China &nbsp;&nbsp; $^2$ Hefei University of Technology
 
@@ -130,8 +130,8 @@ bash cococaption/get_stanford_models.sh
 | Component | Description | Source |
 |-----------|-------------|--------|
 | LLaVA-OneVision-Qwen2-0.5B | Visual backbone | [HuggingFace](https://huggingface.co/lmms-lab/llava-onevision-qwen2-0.5b-ov) |
-| SigLIP-so400m-patch14-384 | Visual encoder (inside LLaVA) | bundled with LLaVA checkpoint |
-| GPT-2 | Language decoder | fine-tuned on artEmis captions |
+| SigLIP-so400m-patch14-384 | Visual encoder (inside LLaVA) | [HuggingFace](https://huggingface.co/google/siglip-so400m-patch14-384) |
+| GPT-2 | Language decoder | [HuggingFace](https://huggingface.co/openai-community/gpt2) |
 
 Download the LLaVA-OneVision checkpoint:
 
